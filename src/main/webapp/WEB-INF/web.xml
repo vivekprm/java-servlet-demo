@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<web-app>
+
+    <servlet>
+        <servlet-name>helloServlet</servlet-name>
+        <servlet-class>org.gradle.demo.HelloServlet</servlet-class>
+        <init-param>
+            <param-name>myParam</param-name>
+            <param-value>This init param value</param-value>
+        </init-param>
+        <!--
+            By setting a <load-on-startup> element, you can tell the servlet container to load the servlet
+            as soon as the servlet container starts. Remember, the servlets init() method is called when the
+            servlet is loaded. The number inside the <load-on-startup>1</load-on-startup> element tells the
+            servlet container in what sequence the servlets should be loaded.  -->
+        <load-on-startup>1</load-on-startup>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>helloServlet</servlet-name>
+        <url-pattern>/hello</url-pattern>
+    </servlet-mapping>
+
+    <context-param>
+        <param-name>contextParam</param-name>
+        <param-value>this is context param value</param-value>
+    </context-param>
+
+    <filter>
+        <filter-name>myFilter</filter-name>
+        <filter-class>org.gradle.demo.filters.SimpleServletFilter</filter-class>
+        <init-param>
+            <param-name>filterInitParam</param-name>
+            <param-value>This is filter init param</param-value>
+        </init-param>
+    </filter>
+
+    <filter-mapping>
+        <filter-name>myFilter</filter-name>
+        <url-pattern>*</url-pattern>
+    </filter-mapping>
+</web-app>
